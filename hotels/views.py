@@ -65,9 +65,6 @@ class CityHotelsViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
                                  hotel=validated_data['hotel'])
         return Response("you liked hotel successfully")
     
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-    
 
 class RoomViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
     serializer_class = RoomSerializer
