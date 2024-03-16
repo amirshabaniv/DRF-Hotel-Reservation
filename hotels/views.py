@@ -66,9 +66,25 @@ class CityHotelsViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
         return Response("you liked hotel successfully")
     
 
-class RoomViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
-    serializer_class = RoomSerializer
+class RoomsAPIView(GenericAPIView):
     queryset = Room.objects.all()
+
+    def get(self, request, hotel_id, city_name):
+        rooms = Room.objects.filter(hotel__city__name=city_name, hotel__id=hotel_id)
+        serializer = RoomSerializer(rooms, many=True)
+        return Response(serializer.data)
+
+
+class RoomAPIView(GenericAPIView):
+    queryset = Room.objects.all()
+
+    def get(self, request, hotel_id, city_name, room_id):
+        room_exists = Room.objects.filter(hotel__city__name=city_name, hotel__id=hotel_id, pk=room_id).exists()
+        if room_exists:
+            room = Room.objects.get(hotel__city__name=city_name, hotel__id=hotel_id, pk=room_id)
+            serializer = RoomSerializer(room)
+            return Response(serializer.data)
+        return Response("Requested room does not exist")
 
     
 class HomeViewSet(GenericViewSet):
