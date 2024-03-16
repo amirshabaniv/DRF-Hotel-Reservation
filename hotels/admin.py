@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import City, Hotel, HotelImage, Room, Reservation, HotelRating, HotelComment, CommentLike, CommentDisLike
+from .models import City, Hotel, HotelImage, Room, HotelRating, HotelComment, CommentLike, CommentDisLike
 
 
 class HotelImagesInline(admin.TabularInline):
@@ -15,10 +15,6 @@ admin.site.register(City)
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
     raw_id_fields = ('hotel',)
-
-@admin.register(Reservation)
-class ReservationAdmin(admin.ModelAdmin):
-    raw_id_fields = ('user', 'hotel', 'room')
 
 @admin.register(HotelRating)
 class HotelRatingAdmin(admin.ModelAdmin):
