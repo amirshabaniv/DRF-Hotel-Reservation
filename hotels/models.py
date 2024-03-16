@@ -100,17 +100,6 @@ class Room(models.Model):
 
     def __str__(self):
         return f'This room is in the {self.hotel.name} hotel'
-    
-
-class Reservation(models.Model):
-    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='reservations')
-    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='reservations')
-    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='reservations')
-    check_in = models.DateField()
-    check_out = models.DateField()
-
-    def __str__(self):
-        return f'{self.user.phone_number} reserved {self.room.room_number} in the {self.hotel.name}'
 
 
 class HotelRating(models.Model):
