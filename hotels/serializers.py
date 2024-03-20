@@ -120,15 +120,7 @@ class HotelSerializer(serializers.ModelSerializer):
             avg = mean([item.rating for item in hotel_ratings])
             return avg
         return 0
-    
 
-class ReservationSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Reservation
-        fields = ['id', 'user', 'hotel', 'room',
-                  'check_in', 'check_out']
-        
 
 class CommentLikeSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(read_only=True)
