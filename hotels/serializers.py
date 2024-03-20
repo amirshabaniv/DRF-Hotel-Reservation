@@ -1,4 +1,4 @@
-from .models import City, Hotel, HotelImage, Room, HotelRating, Reservation, HotelComment, HotelLike, CommentLike, CommentDisLike
+from .models import City, Hotel, HotelImage, Room, HotelRating, HotelComment, HotelLike, CommentLike, CommentDisLike
 
 from rest_framework import serializers
 
