@@ -1,1 +1,1 @@
-### Hotel reservation with DRF
+### Hotel reservation with django rest framework
