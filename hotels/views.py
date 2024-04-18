@@ -49,7 +49,7 @@ class CityHotelsViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
         serializer.is_valid(raise_exception=True)
         validated_data = serializer.validated_data
         if CommentDisLike.objects.filter(user=self.request.user, comment=validated_data['comment']).exists():
-            return Response('you already disliked it')
+            return Response("you already disliked it")
         CommentDisLike.objects.create(user=self.request.user,
                                       comment=validated_data['comment'])
         return Response("you disliked comment successfully")
