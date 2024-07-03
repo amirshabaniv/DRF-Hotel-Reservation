@@ -20,9 +20,9 @@ class HotelRatingSerializer(serializers.ModelSerializer):
         fields = ["id", "rating", "description"]
     
     def create(self, validated_data):
-        cinema_id = self.context["cinema_id"]
+        hotel_id = self.context["hotel_id"]
         user_id = self.context["user_id"]
-        rating = HotelRating.objects.create(cinema_id = cinema_id, user_id=user_id, **self.validated_data)
+        rating = HotelRating.objects.create(hotel_id = hotel_id, user_id=user_id, **self.validated_data)
         return rating
 
 
